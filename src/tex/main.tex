@@ -1,0 +1,165 @@
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{algpseudocode}
+\usepackage{fancyhdr}
+
+\geometry{verbose,letterpaper,tmargin=3cm,bmargin=3cm,lmargin=2.5cm,rmargin=2.5cm}
+
+% Tables
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+
+% Avoid to split words at the end of each line
+\usepackage[none]{hyphenat}
+
+\author{Jamer José Rebolledo$^\dag$ and Juan Carlos Rivera$^\ddag$\footnote{ Tutor} \\ \vspace{0.3cm}\small{jjrebolleq@eafit.edu.co, jrivera6@eafit.edu.co}\\ $^\dag$Mathematical Engineering, Universidad EAFIT\\ $^\ddag$Mathematical Science Department, School of Sciences, Universidad EAFIT}
+
+\title{\large Research practice I\\ \vspace{0.2cm} Research proposal\\ \vspace{0.5cm} \LARGE Scheduling of Colombian professional soccer league: \\A comparison of models}
+
+\sloppy
+
+\begin{document}
+\date{August, 2019}
+
+\maketitle
+
+
+\section{Problem definition}
+
+An adequate sport schedule is important because it impacts the equity and attractive of tournaments, and the economic results for the teams. Professional Colombian soccer teams can have more than three tournaments in a time horizon (i.e. Liga Águila, Copa Colombia, Copa Libertadores de América, etc.) and to avoid conflicting schedules can be a complex task.
+
+In addition, each tournament has specific features due to local and social constraints. In particular, the Professional Colombian soccer league (Liga Águila) present unique constraints: a.) some teams share the same stadium for their matches, so they cannot play as locals the same date, b.) there exists a date for classical matches, i.e. matches with special attractive for fans, c.) dates of matches are restricted to stadium availability since most of them are public domain, among others.
+
+The general problem can be mathematically defined as follow: Given a set $T=\{1,...,n\}$ of $n$ teams, a set $D=\{1,...,m\}$ of $m$ dates and a set $E=\{(i,j) \ | \ i\in T, \ j \in T, \ i\neq j\}$ of matches, the objective is to assign a date $d \in D$ to each event $e \in E$. Such assignment must satisfy that a.) each team must play once against each other (single robin) and b.) each team can play at most once on each date. Other features are going to be considered during the research: number of local versus visitor events of each team, classics matches, complexity balance. It is assumed without loss of generality that $m>n$, that is the number of dates is larger than then number of matches of a team, so each team can rest some dates during the tournament.
+
+
+\section{Objectives}
+
+\subsection{General objective}
+
+To propose solution methods for a Sport Scheduling Problem applied to the schedule of Colombian Soccer tournaments.
+
+
+\subsection{Specific objectives}
+
+\begin{itemize}
+
+\item To perform a review of the state of the art and current practices in order to define an adequate conceptual model.
+
+\item To propose a mathematical formulation to solve the model proposed in previous objective.
+
+\item To propose alternative efficient solution methods, i.e. heuristics, to get good quality solutions for the proposed method.
+
+\item To perform computational experiments in order to analyze the convergence and other applications of the proposed solution methods.
+
+\end{itemize}
+
+
+
+\section{State of the art}
+
+%The main references related with the problem must be described in this section. This state of the art can be referred to the specific problem or application, or to the methods applied to solve it. You must not forget to include the most important papers and the most recent ones.
+
+There are a lot of articles about sport scheduling due to the increasing interest in the area.
+
+In \cite{ecuadorian} a model is developed for the Ecuatorian Football Federation (FEF) that considers economic benefits, special conditions of the championship, coordination with international events, security and geographical constraints, among others possible issues and / or benefits.
+
+Despite their goals were considered ambitious according to themselves they were motivated for the vast literature on sports scheduling that shows great progress towards achieving these goals.
+
+They proposed an exact solution to their integer programming formulation and also a heuristic approach based on three phases. The schedules obtained met the expectations of the FEF and one of them was adopted as the official schedule for the 2012 edition of the Ecuadorian professional football championship.
+
+In other article \cite{basketball}, the authors worked in a model scheduling Argentina's professional basketball leagues. They focused in the objective of reducing the travelling distances for every team. This implies lower travel costs and less player fatigue.
+
+This problem is a variation of the well-known Travelling Tournament Problem and for its solution they provided two stages, the first one defining the sequences in which each team plays the other teams and the second assigning the days on which each game is played. Both stages used integer programming models that incorporate a series of constraints reflecting criteria requested by the Argentina Basketball Club Association. Implementation of the models has generated average travel distance reductions of more than 30\% per away game.
+
+%Those two articles above show two examples of articles that show the kind of work that we want to develop here.
+
+By last, in \cite{bibliography} the authors wrote an annotated bibliography that collect an extensive quantity of articles for over the last 40 years showing the increasing interest in the area of sports scheduling.
+
+\section{Justification}
+
+Justification of this research practice can be seen from four different points of view: educational, theoretical, practical and algorithmic aspects.
+
+From educational point of view, research practices are ideal scenarios to expose students to test hypothesis and work with experimented researchers. The subject of this research combines optimization methods, one of my favorite topics, and soccer, one of my hobbies, and it is applied to a real case from Colombia.
+
+The theoretical aspect of this proposal is related to the complexity of the optimization problem. Since it is NP-hard, to find methods that balance efficiency and solution quality is a relevant issue.
+
+From practical point of view, previous researches have found several weaknesses on the current schedules of Colombian tournaments. Better solutions can help to improve fairness, attractive and logistical issues of the local tournaments.
+
+Finally, the development of numerical optimization methods can contribute to propose more efficient algorithms for the proposed problems.
+
+
+\section{Scope}
+
+In this research practice we are going to study a scheduling problem applied to the professional soccer league in Colombia. All information required to deal with this problem is public and can be found on internet (matches, dates, current schedule, teams, etc.). Some of the assumptions considered in current scheduling can be relaxed or modified in order to test different alternatives and their impacts.
+
+To solve the resulting optimization problems, mathematical formulations and metaheuristic methods can be used. Mathematical models are going to be solved via a commercial solver, i.e. Gurobi. Metaheuristic methods are going to be coded on Python if needed. Python is a free software while Gurobi academic licenses can be obtained from Universidad EAFIT campus.
+
+\section{Proposed methodology}
+
+This research practice will be developed in four different phases. The first phase is devoted to define an adequate conceptual model and to differentiate our research from literature. The second phase focuses on the proposition of mathematical formulations for the optimization model. Heuristic and metaheuristic methods could be proposed in a third phase depending on the preliminary results obtained with mathematical model resolution. The final phase consists in the performing of computational experiments in order to  evaluate the proposed methods.
+
+In order to reach the objectives, weekly meetings will be scheduled to review the advance of the project and analyze the results.
+
+
+\section{Schedule}
+
+Table \ref{tb_sch} summarizes the proposed schedule for this research practice.
+
+
+\begin{table}[!ht]
+	\begin{center}
+     \caption{Schedule}
+	\label{tb_sch}
+       
+    \scalebox{0.78}{
+    \normalsize{
+		\begin{tabular}{|p{7cm}|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|}
+			\hline
+			\multirow{2}{*}{\emph{Activity}} & \multicolumn{18}{c|}{\emph{Weeks}} \\
+			\cline{2-19}
+            & \emph{\footnotesize 1} & \emph{\footnotesize 2} & \emph{\footnotesize 3} & \emph{\footnotesize 4} & \emph{\footnotesize 5} & \emph{\footnotesize 6} & \emph{\footnotesize 7} & \emph{\footnotesize 8} & \emph{\footnotesize 9} & \emph{\footnotesize 10} & \emph{\footnotesize 11} & \emph{\footnotesize 12} & \emph{\footnotesize 13} & \emph{\footnotesize 14} & \emph{\footnotesize 15} & \emph{\footnotesize 16} & \emph{\footnotesize 17} & \emph{\footnotesize 18} \\
+			\hline
+			Define a conceptual model & \cellcolor{black}{1}  & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1}  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
+			\hline
+			Proposition of mathematical formulations & & & & & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} &
+			& & & & & & & & & & \\
+			\hline
+			Heuristic and metaheuristic methods & & & & & & & & \cellcolor{black}{1} & \cellcolor{black}{1} &  \cellcolor{black}{1}& \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} & & \\
+			\hline
+			Computational experiments & & & & & & & & & & & & & & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} \\
+			\hline
+		\end{tabular}
+        }
+        }
+    
+	\end{center}
+
+\end{table}
+
+\section{Budget}
+
+Universidad EAFIT provides data bases for the literature review, software licenses to implement the computer models and the required time of the tutor professor.
+
+
+\section{Intellectual property}
+
+According to the internal regulation on intellectual property within Universidad EAFIT, the results of this research practice are product of \emph{Jamer José Rebolledo Quiroz} and \emph{Juan Carlos Rivera}.\\
+
+In case further products, beside academic articles, that could be generated from this work, the intellectual property distribution related to them will be directed under the current regulation of this matter determined by \cite{reglamento2017}.
+
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}
